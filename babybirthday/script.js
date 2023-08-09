@@ -3,13 +3,17 @@ var defaults = {
   origin: { y: 0.7 }
 };
 
+var partypopper= document.getElementById("partypopper");
+
 const fire=(particleRatio, opts)=>{
   confetti(Object.assign({}, defaults, opts, {
     particleCount: Math.floor(count * particleRatio)
   }));
 }
 
+
 setTimeout(() => {
+  partypopper.play()
     fire(0.25, {
         spread: 26,
         startVelocity: 55,
@@ -32,26 +36,28 @@ setTimeout(() => {
         spread: 120,
         startVelocity: 45,
       });    
-},1000);
+},1500);
 
-// document.addEventListener('contextmenu', function(e) {
-//   e.preventDefault();
-// });
 
-// document.onkeydown = (e) => {
-//   if (e.key == 123) {
-//       e.preventDefault();
-//   }
-//   if (e.ctrlKey && e.shiftKey && e.key == 'I') {
-//       e.preventDefault();
-//   }
-//   if (e.ctrlKey && e.shiftKey && e.key == 'C') {
-//       e.preventDefault();
-//   }
-//   if (e.ctrlKey && e.shiftKey && e.key == 'J') {
-//       e.preventDefault();
-//   }
-//   if (e.ctrlKey && e.key == 'U') {
-//       e.preventDefault();
-//   }
-// };
+
+document.addEventListener('contextmenu', function(e) {
+  e.preventDefault();
+});
+
+document.onkeydown = (e) => {
+  if (e.key == 123) {
+      e.preventDefault();
+  }
+  if (e.ctrlKey && e.shiftKey && e.key == 'I') {
+      e.preventDefault();
+  }
+  if (e.ctrlKey && e.shiftKey && e.key == 'C') {
+      e.preventDefault();
+  }
+  if (e.ctrlKey && e.shiftKey && e.key == 'J') {
+      e.preventDefault();
+  }
+  if (e.ctrlKey && e.key == 'U') {
+      e.preventDefault();
+  }
+};
