@@ -4,6 +4,7 @@ var defaults = {
 };
 
 var partypopper= document.getElementById("partypopper");
+var bgmusic= document.getElementById("bgmusic");
 
 const fire=(particleRatio, opts)=>{
   confetti(Object.assign({}, defaults, opts, {
@@ -11,33 +12,47 @@ const fire=(particleRatio, opts)=>{
   }));
 }
 
+function pageScroll() {
+  window.scrollBy(0,1);
+}
+var scrolldelay;
 
-setTimeout(() => {
-  partypopper.play()
-    fire(0.25, {
-        spread: 26,
-        startVelocity: 55,
-      });
-      fire(0.2, {
-        spread: 60,
-      });
-      fire(0.35, {
-        spread: 100,
-        decay: 0.91,
-        scalar: 0.8
-      });
-      fire(0.1, {
-        spread: 120,
-        startVelocity: 25,
-        decay: 0.92,
-        scalar: 1.2
-      });
-      fire(0.1, {
-        spread: 120,
-        startVelocity: 45,
-      });    
-},1500);
 
+$("#heart").click(function(){
+  bgmusic.play()
+  $("#cover").fadeOut(900);
+  setTimeout(() => {
+    partypopper.play()
+      fire(0.25, {
+          spread: 26,
+          startVelocity: 55,
+        });
+        fire(0.2, {
+          spread: 60,
+        });
+        fire(0.35, {
+          spread: 100,
+          decay: 0.91,
+          scalar: 0.8
+        });
+        fire(0.1, {
+          spread: 120,
+          startVelocity: 25,
+          decay: 0.92,
+          scalar: 1.2
+        });
+        fire(0.1, {
+          spread: 120,
+          startVelocity: 45,
+        });  
+        
+        scrolldelay = setInterval('pageScroll()',20);
+  },1500);
+});
+
+$(document).on("click",()=>{
+  clearInterval(scrolldelay)
+})
 
 
 document.addEventListener('contextmenu', function(e) {
